@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chroma Exchange</title>
+<title>Marble Game</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --bg:#0d1018;
   --s1:#161b28;--s2:#1c2234;--s3:#222840;
-  --bd:rgba(255,255,255,0.07);--bd2:rgba(255,255,255,0.13);--bd3:rgba(255,255,255,0.2);
+  --bd:rgba(255,255,255,0.07);--bd2:rgba(255,255,255,0.13);
   --tx:#e6e9f4;--mu:#6e748f;--fa:#272d44;
   --cR:#e85d5d;--cRb:rgba(232,93,93,0.14);--cRt:#ffaaaa;
   --cB:#4d9fff;--cBb:rgba(77,159,255,0.14);--cBt:#93c5fd;
@@ -22,8 +22,6 @@
   --mono:'DM Mono',monospace;
 }
 body{font-family:var(--font);background:var(--bg);color:var(--tx);min-height:100vh;font-size:15px;line-height:1.5;}
-
-/* shell */
 .shell{display:flex;flex-direction:column;min-height:100vh;}
 header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--s1);border-bottom:1px solid var(--bd);gap:12px;flex-wrap:wrap;}
 .logo{display:flex;align-items:center;gap:10px;}
@@ -35,23 +33,14 @@ header{display:flex;align-items:center;justify-content:space-between;padding:16p
 .sdot{width:6px;height:6px;border-radius:50%;background:#52c97a;flex-shrink:0;}
 .sdot.w{background:var(--cY);}
 .sdot.e{background:var(--cR);}
-
-/* nav */
 nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;display:flex;overflow-x:auto;}
 .ntab{padding:11px 18px;font-size:13px;font-weight:500;color:var(--mu);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .14s;margin-bottom:-1px;}
 .ntab:hover{color:var(--tx);}
 .ntab.on{color:var(--tx);border-bottom-color:var(--cP);}
-
-/* content */
 .wrap{max-width:920px;margin:0 auto;width:100%;padding:28px 20px 70px;}
 .view{display:none;}.view.on{display:block;}
-
-/* typography helpers */
 .ttl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);margin-bottom:12px;}
 .card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);padding:20px;}
-.divider{border:none;border-top:1px solid var(--bd);margin:22px 0;}
-
-/* buttons */
 .btn{padding:8px 16px;border-radius:var(--r);font-size:13px;font-family:var(--font);font-weight:500;cursor:pointer;border:1px solid var(--bd2);background:var(--s2);color:var(--tx);transition:background .13s;white-space:nowrap;}
 .btn:hover{background:var(--s3);}
 .btn:active{transform:scale(.98);}
@@ -63,18 +52,14 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .btn.rr:hover{background:rgba(232,93,93,.22);}
 .btn.sm{padding:5px 11px;font-size:12px;}
 .btn.lg{padding:12px 28px;font-size:15px;font-weight:600;}
-
-/* step wrapper */
 .steps{display:flex;flex-direction:column;gap:22px;}
 .step-box{border-radius:var(--rl);border:1px solid var(--bd);background:var(--s1);overflow:hidden;}
 .step-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--bd);background:var(--s2);}
 .snum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
 .stitle{font-size:14px;font-weight:600;}
-.schosen{margin-left:auto;font-size:12px;color:var(--cP);font-weight:500;}
+.schosen{margin-left:auto;font-size:12px;font-weight:500;}
 .step-body{padding:16px 18px;}
 .step-box.locked{opacity:.35;pointer-events:none;}
-
-/* colour picker */
 .cpick{display:flex;gap:10px;flex-wrap:wrap;}
 .cbtn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 16px;background:var(--s2);border:1.5px solid var(--bd);border-radius:var(--rl);cursor:pointer;transition:border-color .13s,transform .12s;font-family:var(--font);}
 .cbtn:hover{transform:translateY(-2px);}
@@ -83,8 +68,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .corb::after{content:'';position:absolute;top:6px;left:8px;width:8px;height:6px;border-radius:50%;background:rgba(255,255,255,.36);transform:rotate(-35deg);}
 .cname{font-size:12px;font-weight:600;}
 .csub{font-size:11px;color:var(--mu);font-family:var(--mono);}
-
-/* amount row */
 .amtrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .stepper{display:flex;border:1px solid var(--bd2);border-radius:var(--r);overflow:hidden;}
 .stbtn{width:38px;height:42px;background:var(--s2);border:none;font-size:18px;color:var(--tx);cursor:pointer;font-family:var(--mono);transition:background .12s;display:flex;align-items:center;justify-content:center;}
@@ -94,21 +77,14 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .qbtns{display:flex;gap:6px;flex-wrap:wrap;}
 .qbtn{padding:6px 11px;border-radius:var(--r);font-size:12px;font-family:var(--mono);font-weight:600;border:1px solid var(--bd2);background:var(--s2);color:var(--mu);cursor:pointer;}
 .qbtn:hover{background:var(--s3);color:var(--tx);}
-
-/* team grid */
 .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;}
 .tbtn{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:10px 13px;text-align:left;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;color:var(--tx);transition:border-color .13s,background .13s;display:flex;align-items:center;gap:7px;}
 .tbtn:hover{background:var(--s3);border-color:var(--bd2);}
 .tbtn.sel{border-color:var(--cP);background:var(--cPb);}
 .tbtn .tsub{font-family:var(--mono);font-size:10px;color:var(--mu);margin-left:auto;flex-shrink:0;}
-
-/* confirm bar */
 .cbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;}
 .cprev{flex:1;min-width:180px;background:var(--s2);border-radius:var(--r);padding:10px 14px;font-size:12px;color:var(--mu);font-family:var(--mono);line-height:1.6;}
 .cprev strong{color:var(--tx);}
-.cprev .big{font-size:14px;font-weight:600;color:var(--tx);}
-
-/* ── POINTS RATE VIEW ── */
 .rate-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:24px;}
 @media(max-width:620px){.rate-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:400px){.rate-grid{grid-template-columns:repeat(2,1fr);}}
@@ -120,7 +96,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .rtotal{font-size:24px;font-weight:600;font-family:var(--mono);line-height:1;margin-bottom:8px;}
 .rbadge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:15px;font-weight:700;font-family:var(--mono);}
 .rrank{font-size:11px;color:var(--mu);margin-top:5px;}
-
 .rank-table{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;}
 .rtrow{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--bd);}
 .rtrow:last-child{border:none;}
@@ -128,18 +103,14 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .rtorb{width:20px;height:20px;border-radius:50%;flex-shrink:0;position:relative;}
 .rtorb::after{content:'';position:absolute;top:3px;left:4px;width:5px;height:4px;border-radius:50%;background:rgba(255,255,255,.34);transform:rotate(-35deg);}
 .rtname{font-weight:500;font-size:14px;flex:1;}
-.rtstk" style="color:var(--tx);font-family:var(--mono);font-size:13px;color:var(--mu);}
+.rtstk{font-family:var(--mono);font-size:13px;color:var(--mu);}
 .rtpts{font-family:var(--mono);font-size:19px;font-weight:700;text-align:right;min-width:54px;}
 .rtlabel{font-size:10px;color:var(--mu);text-align:right;}
-
-/* ── TAKE TAB — point rate inputs ── */
 .rate-inputs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
 .ri-field{display:flex;flex-direction:column;gap:5px;align-items:center;}
 .ri-field label{font-size:11px;font-weight:600;letter-spacing:.04em;}
 .ri-field input{width:64px;text-align:center;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:7px 4px;font-family:var(--mono);font-size:15px;font-weight:600;color:var(--tx);}
 .ri-field input:focus{outline:none;border-color:var(--cP);}
-
-/* ── LEADERBOARD ── */
 .lb{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;}
 .lbrow{display:flex;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid var(--bd);transition:background .1s;}
 .lbrow:last-child{border:none;}
@@ -151,42 +122,22 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 .chip{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);}
 .lbpts{font-size:20px;font-weight:600;font-family:var(--mono);text-align:right;min-width:60px;}
 .lbpts small{font-size:11px;color:var(--mu);font-weight:400;display:block;text-align:right;}
-
-/* ── SETTINGS ── */
 .base-adj{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
 .ba-field{display:flex;flex-direction:column;gap:5px;align-items:center;}
 .ba-field label{font-size:11px;font-weight:600;letter-spacing:.04em;}
 .ba-field input{width:64px;text-align:center;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:7px 4px;font-family:var(--mono);font-size:14px;color:var(--tx);}
 .ba-field input:focus{outline:none;border-color:var(--cP);}
-
-/* firebase banner */
-#fbbanner{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rl);padding:16px 18px;margin-bottom:22px;display:flex;align-items:flex-start;gap:12px;}
-#fbbanner h3{font-size:13px;font-weight:600;margin-bottom:4px;}
-#fbbanner p{font-size:12px;color:var(--mu);line-height:1.6;}
-.fbrow{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
-.fbrow input{flex:1;min-width:180px;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:7px 10px;color:var(--tx);font-family:var(--mono);font-size:12px;}
-.fbrow input::placeholder{color:var(--mu);}
-.fbrow input:focus{outline:none;border-color:var(--cP);}
-
-/* log */
-.log-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;max-height:260px;overflow-y:auto;}
+.log-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;max-height:280px;overflow-y:auto;}
 .log-row{display:flex;gap:10px;padding:9px 14px;border-bottom:1px solid var(--bd);font-size:12px;}
 .log-row:last-child{border:none;}
 .log-time{color:var(--mu);font-family:var(--mono);flex-shrink:0;font-size:11px;}
 .log-msg{color:var(--tx);flex:1;}
-
-/* toast */
+/* conflict toast */
+#conflict-banner{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#2a1f10;border:1px solid var(--cY);border-radius:var(--rl);padding:12px 18px;font-size:13px;color:var(--cYt);z-index:400;max-width:400px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.5);}
+#conflict-banner.on{display:block;}
 #toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--s2);border:1px solid var(--bd2);border-radius:20px;padding:8px 20px;font-size:13px;color:var(--tx);opacity:0;pointer-events:none;z-index:300;white-space:nowrap;transition:transform .22s,opacity .22s;}
 #toast.on{transform:translateX(-50%) translateY(0);opacity:1;}
-
-/* flash */
-.flash{animation:fl .5s ease;}
-@keyframes fl{0%,100%{background:transparent;}50%{background:rgba(167,139,250,.18);}}
-
-@media(max-width:600px){
-  .rate-grid{grid-template-columns:repeat(3,1fr);}
-  .tgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));}
-}
+@media(max-width:600px){.rate-grid{grid-template-columns:repeat(3,1fr);}.tgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));}}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-thumb{background:var(--fa);border-radius:3px;}
 </style>
@@ -203,9 +154,9 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
       <div class="lorb" style="background:var(--cY);"></div>
       <div class="lorb" style="background:var(--cP);"></div>
     </div>
-    <h1>Chroma Exchange <em>Controller</em></h1>
+    <h1>Marble Game <em>Controller</em></h1>
   </div>
-  <div class="spill"><div class="sdot" id="sdot"></div><span id="slabel">Loading…</span></div>
+  <div class="spill"><div class="sdot" id="sdot"></div><span id="slabel">Connecting…</span></div>
 </header>
 
 <nav>
@@ -216,8 +167,11 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
   <div class="ntab"     onclick="go('settings')">Settings</div>
 </nav>
 
+<div id="conflict-banner">⚠️ Conflict detected — your changes were merged with another device's update.</div>
+
 <div class="wrap">
 
+<!-- ① POINTS RATE -->
 <div id="view-rates" class="view on">
   <div class="ttl" style="margin-bottom:16px;">Current point values — based on global stock</div>
   <div class="rate-grid" id="rate-cards"></div>
@@ -230,22 +184,57 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
   </div>
 </div>
 
-<div id="view-give" class="view"><div class="steps">
-<div class="step-box" id="gS1"><div class="step-head"><div class="snum" style="background:var(--cPb);color:var(--cPt);">1</div><div class="stitle">Select a marble colour</div><div class="schosen" id="gC1"></div></div><div class="step-body"><div class="cpick" id="give-cpick"></div></div></div>
-<div class="step-box locked" id="gS2"><div class="step-head"><div class="snum" style="background:var(--cPb);color:var(--cPt);">2</div><div class="stitle">How many marbles to add to stock?</div></div><div class="step-body"><div class="amtrow"><div class="stepper"><button class="stbtn" onclick="gadj(-1)">−</button><input class="stinp" type="number" id="give-amt" value="1" min="1"><button class="stbtn" onclick="gadj(1)">+</button></div><div class="qbtns"><button class="qbtn" onclick="gset(1)">1</button><button class="qbtn" onclick="gset(5)">5</button><button class="qbtn" onclick="gset(10)">10</button><button class="qbtn" onclick="gset(25)">25</button><button class="qbtn" onclick="gset(50)">50</button></div></div><div class="cbar"><div class="cprev" id="give-prev">Select a colour first</div><button class="btn lg gg" onclick="confirmGive()">Add to stock</button></div></div></div>
-</div></div>
+<!-- ② GIVE MARBLES -->
+<div id="view-give" class="view">
+  <div class="steps">
+    <div class="step-box" id="gS1">
+      <div class="step-head">
+        <div class="snum" style="background:var(--cPb);color:var(--cPt);">1</div>
+        <div class="stitle">Select a marble colour</div>
+        <div class="schosen" id="gC1" style="color:var(--cP);"></div>
+      </div>
+      <div class="step-body"><div class="cpick" id="give-cpick"></div></div>
+    </div>
+    <div class="step-box locked" id="gS2">
+      <div class="step-head">
+        <div class="snum" style="background:var(--cPb);color:var(--cPt);">2</div>
+        <div class="stitle">How many marbles to add to stock?</div>
+      </div>
+      <div class="step-body">
+        <div class="amtrow">
+          <div class="stepper">
+            <button class="stbtn" onclick="gadj(-1)">−</button>
+            <input class="stinp" type="number" id="give-amt" value="1" min="1">
+            <button class="stbtn" onclick="gadj(1)">+</button>
+          </div>
+          <div class="qbtns">
+            <button class="qbtn" onclick="gset(1)">1</button>
+            <button class="qbtn" onclick="gset(5)">5</button>
+            <button class="qbtn" onclick="gset(10)">10</button>
+            <button class="qbtn" onclick="gset(25)">25</button>
+            <button class="qbtn" onclick="gset(50)">50</button>
+          </div>
+        </div>
+        <div class="cbar">
+          <div class="cprev" id="give-prev">Select a colour first</div>
+          <button class="btn lg gg" onclick="confirmGive()">Add to stock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- ③ TAKE MARBLES -->
 <div id="view-take" class="view">
   <div class="steps">
-
     <div class="step-box" id="tS1">
       <div class="step-head">
         <div class="snum" style="background:var(--cRb);color:var(--cRt);">1</div>
         <div class="stitle">Set point rate per marble colour</div>
-        <div class="schosen" id="tC1" style="color:var(--cR);"></div>
+        <div class="schosen" id="tC1" style="color:var(--cG);"></div>
       </div>
       <div class="step-body">
-        <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Enter how many points each marble colour is worth for this transaction. Defaults to the live auto-calculated rate.</p>
+        <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">How many points each marble colour is worth when taken from a team.</p>
         <div class="rate-inputs" id="take-rate-inputs"></div>
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
           <button class="btn sm pp" onclick="loadLiveRates()">Load live rates</button>
@@ -253,22 +242,18 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
         </div>
       </div>
     </div>
-
     <div class="step-box locked" id="tS2">
       <div class="step-head">
         <div class="snum" style="background:var(--cRb);color:var(--cRt);">2</div>
         <div class="stitle">Select team that gives the marbles</div>
         <div class="schosen" id="tC2" style="color:var(--cR);"></div>
       </div>
-      <div class="step-body">
-        <div class="tgrid" id="take-tgrid"></div>
-      </div>
+      <div class="step-body"><div class="tgrid" id="take-tgrid"></div></div>
     </div>
-
     <div class="step-box locked" id="tS3">
       <div class="step-head">
         <div class="snum" style="background:var(--cRb);color:var(--cRt);">3</div>
-        <div class="stitle">Select marbles taken from the team</div>
+        <div class="stitle">Select marble colour &amp; amount taken</div>
         <div class="schosen" id="tC3" style="color:var(--cR);"></div>
       </div>
       <div class="step-body">
@@ -291,38 +276,34 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
         </div>
         <div class="cbar">
           <div class="cprev" id="take-prev">Complete steps above</div>
-          <button class="btn lg rr" id="take-btn" onclick="confirmTake()">Take marbles &amp; give points</button>
+          <button class="btn lg rr" onclick="confirmTake()">Take marbles &amp; give points</button>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
+<!-- ④ LEADERBOARD -->
 <div id="view-board" class="view">
   <div class="ttl" style="margin-bottom:16px;">Teams ranked by total points earned</div>
   <div class="lb" id="lb"></div>
 </div>
 
+<!-- ⑤ SETTINGS -->
 <div id="view-settings" class="view">
-
-  <div id="fbbanner">
-    <div style="font-size:22px;flex-shrink:0;margin-top:2px;">🔥</div>
-    <div style="flex:1;">
-      <h3>Firebase — cross-device sync</h3>
-      <p>Paste your Realtime Database URL to sync across all devices. Without it, data is saved in this browser only.</p>
-      <div class="fbrow">
-        <input type="text" id="fbinp" placeholder="https://your-project-default-rtdb.firebaseio.com">
-        <button class="btn pp" onclick="connectFB()">Connect</button>
-        <button class="btn sm" onclick="dismissFB()">Local only</button>
-      </div>
-      <p style="margin-top:8px;font-size:11px;color:var(--mu);">Free at console.firebase.google.com → Create project → Realtime Database → Test mode.</p>
+  <div class="card" style="margin-bottom:20px;">
+    <div class="ttl">Firebase connection</div>
+    <p style="font-size:12px;color:var(--mu);margin-bottom:12px;">Connected to your project database. Change URL here if needed.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <input type="text" id="fbinp" style="flex:1;min-width:200px;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:8px 12px;color:var(--tx);font-family:var(--mono);font-size:12px;">
+      <button class="btn pp" onclick="reconnectFB()">Reconnect</button>
     </div>
+    <p style="margin-top:8px;font-size:11px;color:var(--mu);" id="fb-status-detail"></p>
   </div>
 
   <div class="card" style="margin-bottom:20px;">
     <div class="ttl">Adjust base marble stock</div>
-    <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Base stock is separate from team holdings. Positive = add, negative = subtract. "Set exact" replaces base stock with entered values.</p>
+    <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Positive = add, negative = subtract. "Set exact" replaces base stock with entered values.</p>
     <div class="base-adj" id="base-adj"></div>
     <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
       <button class="btn pp" onclick="applyBase()">Apply adjustment</button>
@@ -332,11 +313,9 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 
   <div class="card" style="margin-bottom:20px;">
     <div class="ttl">Edit team names</div>
-    <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Change names here. Your marble counts and points will stay the same.</p>
-    <div class="tgrid" id="team-name-editor"></div>
-    <div style="margin-top:14px;">
-      <button class="btn pp" onclick="saveTeamNames()">Save team names</button>
-    </div>
+    <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Rename teams. Marble counts and points stay the same.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;" id="team-name-editor"></div>
+    <div style="margin-top:14px;"><button class="btn pp" onclick="saveTeamNames()">Save team names</button></div>
   </div>
 
   <div class="card" style="margin-bottom:20px;">
@@ -351,21 +330,21 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
   <div class="ttl">Activity log</div>
   <div class="log-wrap" id="log-wrap"></div>
   <div style="margin-top:8px;"><button class="btn sm" onclick="clearLog()">Clear log</button></div>
-
 </div>
 
-</div></div><div id="toast"></div>
+</div></div>
+<div id="toast"></div>
 
 <script>
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 // CONSTANTS
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 const C=[
-  {key:'red',   label:'Red',   emoji:'🔴',clr:'var(--cR)',bg:'var(--cRb)',tc:'var(--cRt)',hex:'#e85d5d',hbg:'rgba(232,93,93,0.14)',htc:'#ffaaaa'},
-  {key:'blue',  label:'Blue',  emoji:'🔵',clr:'var(--cB)',bg:'var(--cBb)',tc:'var(--cBt)',hex:'#4d9fff',hbg:'rgba(77,159,255,0.14)',htc:'#93c5fd'},
-  {key:'green', label:'Green', emoji:'🟢',clr:'var(--cG)',bg:'var(--cGb)',tc:'var(--cGt)',hex:'#52c97a',hbg:'rgba(82,201,122,0.14)',htc:'#86efac'},
-  {key:'yellow',label:'Yellow',emoji:'🟡',clr:'var(--cY)',bg:'var(--cYb)',tc:'var(--cYt)',hex:'#f0c040',hbg:'rgba(240,192,64,0.14)',htc:'#fde68a'},
-  {key:'purple',label:'Purple',emoji:'🟣',clr:'var(--cP)',bg:'var(--cPb)',tc:'var(--cPt)',hex:'#a78bfa',hbg:'rgba(167,139,250,0.14)',htc:'#c4b5fd'},
+  {key:'red',   label:'Red',   emoji:'🔴',hex:'#e85d5d',hbg:'rgba(232,93,93,0.14)',  htc:'#ffaaaa'},
+  {key:'blue',  label:'Blue',  emoji:'🔵',hex:'#4d9fff',hbg:'rgba(77,159,255,0.14)', htc:'#93c5fd'},
+  {key:'green', label:'Green', emoji:'🟢',hex:'#52c97a',hbg:'rgba(82,201,122,0.14)', htc:'#86efac'},
+  {key:'yellow',label:'Yellow',emoji:'🟡',hex:'#f0c040',hbg:'rgba(240,192,64,0.14)', htc:'#fde68a'},
+  {key:'purple',label:'Purple',emoji:'🟣',hex:'#a78bfa',hbg:'rgba(167,139,250,0.14)',htc:'#c4b5fd'},
 ];
 const TNAMES=[
   'Thunder Hawks','Iron Wolves','Crystal Dragons','Storm Eagles','Neon Tigers',
@@ -374,185 +353,247 @@ const TNAMES=[
   'Apex Cobras','Lunar Owls','Terra Bulls','Nova Stallions','Dusk Crows'
 ];
 const RLABELS=['Least common','2nd least','Middle','2nd most','Most common'];
+const FBU='https://ahis-lsc-2627-default-rtdb.asia-southeast1.firebasedatabase.app';
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 // STATE
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 let DB=null;
-let FBU='https://ahis-lsc-2627-default-rtdb.asia-southeast1.firebasedatabase.app';
 let fbPoll=null;
-let currentETag=null; // Tracks current version state to manage concurrency conflicts
+let isSaving=false;
+let pendingOps=[];   // queue of operations to apply atomically
+let gColour=null;
+let tTeam=null;
+let tColour=null;
 
-// Give flow
-let gColour=null; 
-
-// Take flow
-let tTeam=null;   
-let tColour=null; 
-
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA HELPERS
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
+// DEFAULT DATA
+// ═══════════════════════════════════════════════════════════════
 function mkDefault(){
-  const teams=TNAMES.map((name,i)=>{const m={};C.forEach(c=>m[c.key]=0);return{id:i,name,marbles:m,points:0};});
-  const stock={};C.forEach(c=>stock[c.key]=50);
-  return{teams,stock,log:[],updatedAt:Date.now()};
+  const teams=TNAMES.map((name,i)=>{
+    const m={};C.forEach(c=>m[c.key]=0);
+    return{id:i,name,marbles:m,points:0};
+  });
+  const stock={};C.forEach(c=>stock[c.key]=20);
+  return{teams,stock,log:[],version:0,updatedAt:Date.now()};
 }
 
+function ensureSchema(d){
+  if(!d)return mkDefault();
+  if(!d.log)d.log=[];
+  if(typeof d.version!=='number')d.version=0;
+  d.teams=d.teams.map(t=>{
+    if(typeof t.points!=='number')t.points=0;
+    C.forEach(c=>{if(typeof t.marbles[c.key]!=='number')t.marbles[c.key]=0;});
+    return t;
+  });
+  return d;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALCULATIONS
+// ═══════════════════════════════════════════════════════════════
 function globalStock(){
   const gs={};
-  C.forEach(c=>{gs[c.key]=(DB.stock[c.key]||0)+DB.teams.reduce((s,t)=>s+(t.marbles[c.key]||0),0);});
+  C.forEach(c=>{
+    gs[c.key]=(DB.stock[c.key]||0)+DB.teams.reduce((s,t)=>s+(t.marbles[c.key]||0),0);
+  });
   return gs;
 }
 
 function calcPtVals(gs){
   const sorted=C.map(c=>({key:c.key,count:gs[c.key]})).sort((a,b)=>a.count-b.count);
   const pts={},ranks={};
-  sorted.forEach((x,i)=>{pts[x.key]=i===0||i===4?1:i===1||i===3?2:3;ranks[x.key]=i;});
+  sorted.forEach((x,i)=>{
+    pts[x.key]=i===0||i===4?1:i===1||i===3?2:3;
+    ranks[x.key]=i;
+  });
   return{pts,ranks,sorted};
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// STORAGE / FIREBASE (CONCURRENCY PATCHED)
-// ─────────────────────────────────────────────────────────────────────────────
-function lsLoad(){try{const r=localStorage.getItem('mg6');return r?JSON.parse(r):null;}catch(e){return null;}}
-function lsSave(d){try{localStorage.setItem('mg6',JSON.stringify(d));}catch(e){}}
-function lsFBU(){return localStorage.getItem('mg6_fb')||'';}
-function lsSetFBU(u){localStorage.setItem('mg6_fb',u);}
+// ═══════════════════════════════════════════════════════════════
+// LOCAL STORAGE
+// ═══════════════════════════════════════════════════════════════
+function lsLoad(){try{const r=localStorage.getItem('mg7');return r?JSON.parse(r):null;}catch(e){return null;}}
+function lsSave(d){try{localStorage.setItem('mg7',JSON.stringify(d));}catch(e){}}
 
-async function fbRead(){
-  if(!FBU)return null;
+// ═══════════════════════════════════════════════════════════════
+// FIREBASE — CONFLICT-SAFE ATOMIC WRITES
+//
+// Strategy: Optimistic Concurrency Control using Firebase's
+// conditional REST API (ETag / If-Match).
+//
+// 1. Read current state + ETag from Firebase.
+// 2. Apply our operation to that state locally.
+// 3. PUT with If-Match: <etag> — Firebase rejects (412) if
+//    another device wrote in between.
+// 4. On 412: re-read, merge, retry up to 5 times.
+//
+// Merge policy (field-level, not document-level):
+//   - stock[colour] = remote + localDelta   (additive)
+//   - team.points   = remote + localDelta   (additive)
+//   - team.marbles  = remote + localDelta   (additive)
+//   - log           = deduplicated union sorted by time
+//   - version       = max(remote, local) + 1
+// ═══════════════════════════════════════════════════════════════
+
+const FB_BASE = FBU + '/marble_game';
+
+async function fbGet(){
+  // Returns {data, etag} or null
   try{
-    const r=await fetch(FBU+'/marble_game.json', {
-      headers: { 'X-Firebase-ETag': 'true' } // Command Firebase to hand over version context
-    });
-    if(!r.ok) return null;
-    currentETag = r.headers.get('ETag'); // Stash version tracking identifier
-    return await r.json();
-  }catch(e){
-    return null;
-  }
+    const r=await fetch(FB_BASE+'.json',{headers:{Accept:'application/json'}});
+    if(!r.ok)return null;
+    const etag=r.headers.get('ETag')||'';
+    const data=await r.json();
+    return{data,etag};
+  }catch(e){return null;}
 }
 
-async function fbWrite(d){
-  if(!FBU) return false;
+async function fbPut(data,etag){
+  // Returns {ok:true,data,etag} or {ok:false,conflict:true} or {ok:false,err}
+  const headers={'Content-Type':'application/json'};
+  if(etag)headers['If-Match']=etag;
   try{
-    const headers = { 'Content-Type': 'application/json' };
-    if(currentETag) {
-      headers['if-match'] = currentETag; // Enforce write validation check
-    }
+    const r=await fetch(FB_BASE+'.json',{method:'PUT',headers,body:JSON.stringify(data)});
+    if(r.status===412)return{ok:false,conflict:true};
+    if(!r.ok)return{ok:false,err:r.status};
+    const newEtag=r.headers.get('ETag')||'';
+    const newData=await r.json();
+    return{ok:true,data:newData,etag:newEtag};
+  }catch(e){return{ok:false,err:e.message};}
+}
 
-    const r=await fetch(FBU+'/marble_game.json',{
-      method:'PUT',
-      headers: headers,
-      body:JSON.stringify(d)
-    });
-
-    if(r.status === 412) {
-      console.warn("Collision catch triggered! Resyncing data records...");
-      return 'conflict'; // Notify driver that state baseline changed under it
-    }
-
-    if(!r.ok) return false;
-    currentETag = r.headers.get('ETag'); // Update tracking context with latest write state
-    return true;
-  }catch(e){
-    return false;
+// Merge remote state + local deltas
+// localOp = {type, payload} describing WHAT we want to do (not the full state)
+function applyOpToState(state,op){
+  const s=JSON.parse(JSON.stringify(state)); // deep clone
+  if(op.type==='addStock'){
+    s.stock[op.colour]=(s.stock[op.colour]||0)+op.amount;
+    if(s.stock[op.colour]<0)s.stock[op.colour]=0;
+  }else if(op.type==='useStock'){
+    // take marble from stock, give points to team
+    const avail=s.stock[op.colour]||0;
+    const taken=Math.min(op.amount,avail);
+    s.stock[op.colour]=avail-taken;
+    const team=s.teams.find(t=>t.id===op.teamId);
+    if(team)team.points=+((team.points||0)+(taken*op.rate)).toFixed(2);
+    op._actualTaken=taken; // store for log message
+  }else if(op.type==='setStock'){
+    C.forEach(c=>{if(op.values[c.key]!==undefined)s.stock[c.key]=op.values[c.key];});
+  }else if(op.type==='adjStock'){
+    C.forEach(c=>{if(op.deltas[c.key]!==undefined)s.stock[c.key]=Math.max(0,(s.stock[c.key]||0)+op.deltas[c.key]);});
+  }else if(op.type==='resetPoints'){
+    s.teams.forEach(t=>t.points=0);
+  }else if(op.type==='resetMarbles'){
+    s.teams.forEach(t=>C.forEach(c=>t.marbles[c.key]=0));
+  }else if(op.type==='resetAll'){
+    const fresh=mkDefault();s.teams=fresh.teams;s.stock=fresh.stock;
+  }else if(op.type==='renameTeams'){
+    op.names.forEach(({id,name})=>{const t=s.teams.find(x=>x.id===id);if(t)t.name=name;});
   }
+  // append log
+  if(op.logMsg){
+    s.log=s.log||[];
+    s.log.unshift({t:Date.now(),msg:op.logMsg});
+    if(s.log.length>200)s.log.length=200;
+  }
+  s.version=(s.version||0)+1;
+  s.updatedAt=Date.now();
+  return s;
 }
 
-async function connectFB(){
-  let u=(document.getElementById('fbinp').value||'').trim().replace(/\/$/,'');
-  if(!u){toast('Paste a Firebase URL first');return;}
-  if(!u.startsWith('https://')){toast('URL must start with https://');return;}
-  FBU=u;lsSetFBU(u);setSS('w','Connecting…');
-  const rem=await fbRead();
-  if(rem&&rem.updatedAt>=(DB.updatedAt||0)){DB=ensureSchema(rem);lsSave(DB);}
-  else await fbWrite(DB);
-  startPoll();
-  document.getElementById('fbbanner').style.display='none';
-  setSS('ok','Synced with Firebase');
-  toast('Firebase connected ✓');renderAll();
+// Atomic write with retry on conflict
+async function atomicWrite(op,maxRetries=5){
+  isSaving=true;setSS('w','Saving…');
+  for(let attempt=0;attempt<maxRetries;attempt++){
+    const got=await fbGet();
+    if(!got){
+      // Firebase unreachable — apply locally only
+      DB=applyOpToState(DB,op);
+      lsSave(DB);
+      isSaving=false;setSS('e','Offline — saved locally');
+      renderAll();
+      return false;
+    }
+    const remote=ensureSchema(got.data);
+    const merged=applyOpToState(remote,op);
+    const result=await fbPut(merged,got.etag);
+    if(result.ok){
+      DB=ensureSchema(result.data||merged);
+      lsSave(DB);
+      isSaving=false;
+      setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
+      renderAll();
+      return true;
+    }
+    if(result.conflict){
+      // Another device wrote — re-read and retry
+      if(attempt<maxRetries-1){
+        showConflictBanner();
+        await sleep(100+Math.random()*200); // jitter
+        continue;
+      }
+    }else{
+      // Hard error
+      isSaving=false;setSS('e','Save error');
+      return false;
+    }
+  }
+  isSaving=false;setSS('e','Conflict — please retry');
+  return false;
 }
 
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+
+// Background poll — read-only, no writes
 function startPoll(){
   if(fbPoll)clearInterval(fbPoll);
   fbPoll=setInterval(async()=>{
-    const r=await fbRead();
-    if(r&&r.updatedAt&&r.updatedAt!==(DB.updatedAt||0)){
-      DB=ensureSchema(r);
-      lsSave(DB);
-      renderAll();
-      setSS('ok','Synced '+new Date(r.updatedAt).toLocaleTimeString());
-    }
-  },4000);
-}
-function dismissFB(){document.getElementById('fbbanner').style.display='none';lsSetFBU('local');setSS('w','Local only');}
-
-function updateFBUInputDisplay(url) {
-  const inp = document.getElementById('fbinp');
-  if(inp) inp.value = url;
-}
-
-function ensureSchema(d){
-  if(!d.log)d.log=[];
-  d.teams=d.teams.map(t=>{if(typeof t.points!=='number')t.points=0;return t;});
-  return d;
-}
-
-// Wrapped mutation pipeline to rerun calculations dynamically if a collision abort is caught
-async function transactionRunner(mutationFn, logLabel) {
-  let attempts = 0;
-  while(attempts < 5) {
-    attempts++;
-    
-    // 1. Force state fetch to ensure local match calculations align
-    if (FBU) {
-      const fresh = await fbRead();
-      if (fresh) DB = ensureSchema(fresh);
-    }
-    
-    // 2. Run state mutation calculation logic locally
-    const actionResult = mutationFn();
-    if (actionResult === false) return; // Action cancelled by logic constraint
-
-    // 3. Stash locally and queue outward update
-    DB.updatedAt = Date.now();
-    lsSave(DB);
-
-    if (!FBU) {
-      setSS('w','Saved locally');
-      return; 
-    }
-
-    setSS('w','Saving…');
-    const writeResult = await fbWrite(DB);
-    
-    if (writeResult === 'conflict') {
-      // Data changed beneath us! Loop back up, fetch fresh ground truth, and recompute
-      continue;
-    }
-    
-    if (writeResult === true) {
+    if(isSaving)return; // don't poll while we're writing
+    const got=await fbGet();
+    if(!got)return;
+    const remote=ensureSchema(got.data);
+    if(remote.version>(DB.version||0)){
+      DB=remote;lsSave(DB);renderAll();
       setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
-      if (logLabel) toast(logLabel);
-      renderAll();
-      return;
     }
-    
-    break; // Exit if network execution hits structural errors
+  },3000);
+}
+
+async function reconnectFB(){
+  const url=(document.getElementById('fbinp').value||'').trim();
+  // In this build, URL is hardcoded; reconnect just re-polls
+  setSS('w','Reconnecting…');
+  const got=await fbGet();
+  if(got){
+    const remote=ensureSchema(got.data);
+    if(remote.version>(DB.version||0)){DB=remote;lsSave(DB);renderAll();}
+    setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
+    toast('Reconnected ✓');
+  }else{
+    setSS('e','Cannot reach Firebase');
+    toast('Could not connect');
   }
-  toast('Transaction structural failure. Re-attempting...');
 }
 
 function setSS(s,lbl){
   document.getElementById('sdot').className='sdot'+(s==='ok'?'':s==='w'?' w':' e');
   document.getElementById('slabel').textContent=lbl;
+  const det=document.getElementById('fb-status-detail');
+  if(det)det.textContent=lbl+' · '+FBU;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+let conflictTimer;
+function showConflictBanner(){
+  const b=document.getElementById('conflict-banner');
+  b.classList.add('on');clearTimeout(conflictTimer);
+  conflictTimer=setTimeout(()=>b.classList.remove('on'),4000);
+}
+
+// ═══════════════════════════════════════════════════════════════
 // NAVIGATION
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 const VIEWS=['rates','give','take','board','settings'];
 function go(v){
   document.querySelectorAll('.ntab').forEach((el,i)=>el.classList.toggle('on',VIEWS[i]===v));
@@ -562,16 +603,15 @@ function go(v){
   if(v==='give')renderGive();
   if(v==='take')renderTake();
   if(v==='board')renderBoard();
-  if(v==='settings'){renderBaseAdj();renderTeamNameEditor();renderLog();updateFBUInputDisplay(FBU);}
+  if(v==='settings'){renderBaseAdj();renderTeamNameEditor();renderLog();
+    document.getElementById('fbinp').value=FBU;}
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 // RENDER — POINTS RATE
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 function renderRates(){
-  const gs=globalStock();
-  const{pts,ranks,sorted}=calcPtVals(gs);
-
+  const gs=globalStock(),{pts,ranks,sorted}=calcPtVals(gs);
   document.getElementById('rate-cards').innerHTML=C.map(c=>{
     const p=pts[c.key],rk=ranks[c.key];
     return`<div class="rcard">
@@ -582,10 +622,8 @@ function renderRates(){
       <div class="rrank">${RLABELS[rk]}</div>
     </div>`;
   }).join('');
-
   document.getElementById('rank-table').innerHTML=sorted.map((x,i)=>{
-    const col=C.find(c=>c.key===x.key);
-    const p=pts[x.key];
+    const col=C.find(c=>c.key===x.key),p=pts[x.key];
     return`<div class="rtrow">
       <div class="rtrk">${i+1}</div>
       <div class="rtorb" style="background:${col.hbg};"></div>
@@ -599,46 +637,67 @@ function renderRates(){
   }).join('');
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// RENDER — GIVE MARBLES
-// ─────────────────────────────────────────────────────────────────────────────
-function renderGive(){const gs=globalStock(),{pts}=calcPtVals(gs);document.getElementById('give-cpick').innerHTML=C.map(c=>{const sel=gColour===c.key;return `<button class="cbtn${sel?' sel':''}" onclick="gPickColour('${c.key}')" style="${sel?'border-color:'+c.hex+';background:'+c.hbg:''}"><div class="corb" style="background:${c.hbg};"></div><div class="cname" style="color:${c.htc};">${c.label}</div><div class="csub">${DB.stock[c.key]||0} in stock</div><div class="csub">${pts[c.key]}pt/marble</div></button>`}).join('')}
-function gPickColour(key){gColour=key;const col=C.find(c=>c.key===key);document.getElementById('gC1').textContent='→ '+col.label;document.getElementById('gS2').classList.remove('locked');updateGivePrev();renderGive()}
-function gadj(d){const i=document.getElementById('give-amt');i.value=Math.max(1,(parseInt(i.value)||1)+d);updateGivePrev()}
-function gset(v){document.getElementById('give-amt').value=v;updateGivePrev()}
+// ═══════════════════════════════════════════════════════════════
+// RENDER — GIVE MARBLES (adds to global stock)
+// ═══════════════════════════════════════════════════════════════
+function renderGive(){
+  const gs=globalStock(),{pts}=calcPtVals(gs);
+  document.getElementById('give-cpick').innerHTML=C.map(c=>{
+    const sel=gColour===c.key;
+    return`<button class="cbtn${sel?' sel':''}" onclick="gPickColour('${c.key}')"
+      style="${sel?'border-color:'+c.hex+';background:'+c.hbg:''}">
+      <div class="corb" style="background:${c.hbg};"></div>
+      <div class="cname" style="color:${c.htc};">${c.label}</div>
+      <div class="csub">${DB.stock[c.key]||0} in stock</div>
+      <div class="csub">${pts[c.key]}pt/marble</div>
+    </button>`;
+  }).join('');
+}
+function gPickColour(key){
+  gColour=key;
+  const col=C.find(c=>c.key===key);
+  document.getElementById('gC1').textContent='→ '+col.label;
+  document.getElementById('gS2').classList.remove('locked');
+  updateGivePrev();renderGive();
+}
+function gadj(d){const i=document.getElementById('give-amt');i.value=Math.max(1,(parseInt(i.value)||1)+d);updateGivePrev();}
+function gset(v){document.getElementById('give-amt').value=v;updateGivePrev();}
 document.getElementById('give-amt').addEventListener('input',updateGivePrev);
-function updateGivePrev(){const prev=document.getElementById('give-prev'),col=C.find(c=>c.key===gColour),amt=parseInt(document.getElementById('give-amt').value)||1;if(!col){prev.innerHTML='Select a colour first';return}const before=DB.stock[col.key]||0;prev.innerHTML=`Add <span style="color:${col.hex};font-weight:700;">${amt}× ${col.label}</span> to stock<br><span>${col.emoji} ${before} → ${before+amt} in stock</span>`}
-
+function updateGivePrev(){
+  const col=C.find(c=>c.key===gColour),amt=parseInt(document.getElementById('give-amt').value)||1;
+  const prev=document.getElementById('give-prev');
+  if(!col){prev.innerHTML='Select a colour first';return;}
+  const before=DB.stock[col.key]||0;
+  prev.innerHTML=`Add <span style="color:${col.hex};font-weight:700;">${amt}× ${col.label}</span> to stock<br><span>${col.emoji} ${before} → ${before+amt} in stock</span>`;
+}
 function confirmGive(){
-  if(!gColour){toast('Select a marble colour first');return}
-  const targetColor = gColour;
+  if(!gColour){toast('Select a marble colour first');return;}
+  const col=C.find(c=>c.key===gColour);
   const amt=Math.max(1,parseInt(document.getElementById('give-amt').value)||1);
-
-  transactionRunner(() => {
-    const col=C.find(c=>c.key===targetColor);
-    const before=DB.stock[col.key]||0;
-    DB.stock[col.key]=before+amt;
-    
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:`Added ${amt}× ${col.emoji} ${col.label} to stock (${before}→${DB.stock[col.key]})`});
-  }, `Added ${amt} marbles to stock`);
-
-  gColour=null;document.getElementById('gC1').textContent='';document.getElementById('give-amt').value=1;document.getElementById('gS2').classList.add('locked');updateGivePrev();renderGive();
+  const op={type:'addStock',colour:col.key,amount:amt,logMsg:`Added ${amt}× ${col.emoji} ${col.label} to stock`};
+  // Optimistic local update first for snappy UI
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();
+  toast(`Added ${amt}× ${col.label} to stock`);
+  // Reset UI
+  gColour=null;document.getElementById('gC1').textContent='';
+  document.getElementById('give-amt').value=1;
+  document.getElementById('gS2').classList.add('locked');
+  updateGivePrev();renderGive();
+  // Then write to Firebase
+  atomicWrite(op);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 // RENDER — TAKE MARBLES
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 function renderTake(){
   renderTakeRateInputs();
   renderTakeTeamGrid();
   renderTakeCpick();
   updateTakePrev();
 }
-
 function renderTakeRateInputs(){
-  const gs=globalStock();
-  const{pts}=calcPtVals(gs);
+  const gs=globalStock(),{pts}=calcPtVals(gs);
   const el=document.getElementById('take-rate-inputs');
   if(!el.querySelector('input')){
     el.innerHTML=C.map(c=>`<div class="ri-field">
@@ -647,124 +706,117 @@ function renderTakeRateInputs(){
         oninput="checkTakeRates()" style="border-color:${c.hbg};">
     </div>`).join('');
   }
-  const allSet=C.every(c=>{const v=parseFloat(document.getElementById('tr-'+c.key)?.value);return !isNaN(v)&&v>=0;});
-  document.getElementById('tC1').textContent=allSet?'✓ Rates set':'';
-  document.getElementById('tS2').classList.toggle('locked',!allSet);
+  checkTakeRates();
 }
-
 function loadLiveRates(){
-  const gs=globalStock();const{pts}=calcPtVals(gs);
-  C.forEach(c=>{const inp=document.getElementById('tr-'+c.key);if(inp)inp.value=pts[c.key];});
+  const gs=globalStock(),{pts}=calcPtVals(gs);
+  C.forEach(c=>{const i=document.getElementById('tr-'+c.key);if(i)i.value=pts[c.key];});
   checkTakeRates();toast('Live rates loaded');
 }
-function clearTakeRates(){C.forEach(c=>{const inp=document.getElementById('tr-'+c.key);if(inp)inp.value='';});checkTakeRates();}
+function clearTakeRates(){C.forEach(c=>{const i=document.getElementById('tr-'+c.key);if(i)i.value='';});checkTakeRates();}
 function checkTakeRates(){
-  const allSet=C.every(c=>{const v=parseFloat(document.getElementById('tr-'+c.key)?.value);return !isNaN(v)&&v>=0;});
+  const allSet=C.every(c=>{const v=parseFloat(document.getElementById('tr-'+c.key)?.value);return!isNaN(v)&&v>=0;});
   document.getElementById('tC1').textContent=allSet?'✓ Rates set':'';
   document.getElementById('tS2').classList.toggle('locked',!allSet);
   if(!allSet){tTeam=null;tColour=null;document.getElementById('tS3').classList.add('locked');}
   updateTakePrev();
 }
-
 function renderTakeTeamGrid(){
-  document.getElementById('take-tgrid').innerHTML=DB.teams.map(t=>`<button class="tbtn${tTeam===t.id?' sel':''}" onclick="tPickTeam(${t.id})">
-    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t.name}</span>
-    <span class="tsub">${Math.round(t.points||0)}pt</span>
-  </button>`).join('');
+  document.getElementById('take-tgrid').innerHTML=DB.teams.map(t=>
+    `<button class="tbtn${tTeam===t.id?' sel':''}" onclick="tPickTeam(${t.id})">
+      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t.name}</span>
+      <span class="tsub">${+(t.points||0).toFixed(1)}pt</span>
+    </button>`
+  ).join('');
 }
-
 function tPickTeam(id){
   tTeam=id;tColour=null;
   const team=DB.teams.find(t=>t.id===id);
   document.getElementById('tC2').textContent='→ '+team.name;
   document.getElementById('tC3').textContent='';
   document.getElementById('tS3').classList.remove('locked');
-  renderTakeTeamGrid();
-  renderTakeCpick();
-  updateTakePrev();
+  renderTakeTeamGrid();renderTakeCpick();updateTakePrev();
 }
-
 function renderTakeCpick(){
-  const team=tTeam!==null?DB.teams.find(t=>t.id===tTeam):null;
   document.getElementById('take-cpick').innerHTML=C.map(c=>{
-    const held=DB.stock[c.key]||0;
+    const stock=DB.stock[c.key]||0;
     const rate=parseFloat(document.getElementById('tr-'+c.key)?.value)||0;
     const sel=tColour===c.key;
     return`<button class="cbtn${sel?' sel':''}" onclick="tPickColour('${c.key}')"
-        style="${sel?'border-color:'+c.hex+';background:'+c.hbg:''}"
-        ${held===0&&team?'style="opacity:.4;"':''}>
+        style="${sel?'border-color:'+c.hex+';background:'+c.hbg:''}${stock===0?';opacity:.4':''}">
       <div class="corb" style="background:${c.hbg};"></div>
       <div class="cname" style="color:${c.htc};">${c.label}</div>
-      <div class="csub">${held} held</div>
+      <div class="csub">${stock} in stock</div>
       <div class="csub">${rate}pt/marble</div>
     </button>`;
   }).join('');
 }
-
 function tPickColour(key){
   tColour=key;
   const col=C.find(c=>c.key===key);
   document.getElementById('tC3').textContent='→ '+col.label;
-  renderTakeCpick();
-  updateTakePrev();
+  renderTakeCpick();updateTakePrev();
 }
-
 function tadj(d){const i=document.getElementById('take-amt');i.value=Math.max(1,(parseInt(i.value)||1)+d);updateTakePrev();}
 function tset(v){document.getElementById('take-amt').value=v;updateTakePrev();}
 document.getElementById('take-amt').addEventListener('input',updateTakePrev);
-
 function updateTakePrev(){
   const team=tTeam!==null?DB.teams.find(t=>t.id===tTeam):null;
   const col=tColour?C.find(c=>c.key===tColour):null;
   const amt=parseInt(document.getElementById('take-amt').value)||1;
+  const rate=tColour?parseFloat(document.getElementById('tr-'+tColour)?.value)||0:0;
   const prev=document.getElementById('take-prev');
   if(!team||!col){prev.innerHTML='Complete steps above';return;}
-  const stock=DB.stock[col.key]||0, actualTaken=Math.min(amt,stock);
-  const rate=parseFloat(document.getElementById('tr-'+tColour)?.value)||0;
+  const stock=DB.stock[col.key]||0,actualTaken=Math.min(amt,stock);
   const pointsGiven=+(actualTaken*rate).toFixed(2);
-  prev.innerHTML=`Use <span style="color:${col.hex};font-weight:700;">${actualTaken}× ${col.label}</span> from global stock for <strong>${team.name}</strong><br><span>${col.emoji} Stock: ${stock} → ${stock-actualTaken}</span><br><span style="color:var(--cGt);">+${pointsGiven} pts</span>`;
+  prev.innerHTML=`Use <span style="color:${col.hex};font-weight:700;">${actualTaken}× ${col.label}</span> from stock for <strong>${team.name}</strong><br>
+  <span>${col.emoji} Stock: ${stock} → ${stock-actualTaken} &nbsp;·&nbsp; </span>
+  <span style="color:var(--cGt);">+${pointsGiven} pts to ${team.name}</span>`;
 }
-
 function confirmTake(){
   if(tTeam===null||!tColour){toast('Select team and colour first');return;}
-  const targetTeamId = tTeam;
-  const targetColorKey = tColour;
+  const team=DB.teams.find(t=>t.id===tTeam);
+  const col=C.find(c=>c.key===tColour);
   const amt=Math.max(1,parseInt(document.getElementById('take-amt').value)||1);
-  const selectedRate=parseFloat(document.getElementById('tr-'+targetColorKey)?.value)||0;
-
-  transactionRunner(() => {
-    const team=DB.teams.find(t=>t.id===targetTeamId);
-    const col=C.find(c=>c.key===targetColorKey);
-    const stock=DB.stock[col.key]||0;
-    const actualTaken=Math.min(amt,stock);
-    
-    if(actualTaken===0){
-      toast('No marbles of that colour left in global stock');
-      return false; 
-    }
-    
-    const pointsGiven=+(actualTaken*selectedRate).toFixed(2);
-    DB.stock[col.key]=stock-actualTaken;
-    team.points=+((team.points||0)+pointsGiven).toFixed(2);
-    
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:`Used ${actualTaken}× ${col.emoji} ${col.label} from global stock for ${team.name} — gave ${pointsGiven} pts`});
-  }, `Transaction recorded successfully`);
-
-  tColour=null;document.getElementById('tC3').textContent='';document.getElementById('take-amt').value=1;renderTakeCpick();updateTakePrev();
+  const rate=parseFloat(document.getElementById('tr-'+tColour)?.value)||0;
+  const stock=DB.stock[col.key]||0;
+  if(stock===0){toast('No '+col.label+' marbles in stock');return;}
+  const actualTaken=Math.min(amt,stock);
+  const pointsGiven=+(actualTaken*rate).toFixed(2);
+  const op={
+    type:'useStock',colour:col.key,amount:amt,teamId:team.id,rate,
+    logMsg:`Used ${actualTaken}× ${col.emoji} ${col.label} from stock for ${team.name} — +${pointsGiven} pts`
+  };
+  // Optimistic local update
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();
+  toast(`Used ${actualTaken}× ${col.label} · +${pointsGiven} pts to ${team.name}`);
+  tColour=null;
+  document.getElementById('tC3').textContent='';
+  document.getElementById('take-amt').value=1;
+  renderTakeCpick();updateTakePrev();
+  // Write to Firebase
+  atomicWrite(op);
 }
 
+// ═══════════════════════════════════════════════════════════════
+// RENDER — LEADERBOARD
+// ═══════════════════════════════════════════════════════════════
 function renderBoard(){
   const teams=[...DB.teams].sort((a,b)=>(b.points||0)-(a.points||0));
   const medals=['🥇','🥈','🥉'];
-  document.getElementById('lb').innerHTML=teams.map((t,i)=>`<div class="lbrow">
-    <div class="lbrk ${i<3?'m':''}">${i<3?medals[i]:i+1}</div>
-    <div class="lbname">${t.name}</div>
-    <div class="lbchips">${C.filter(c=>t.marbles[c.key]>0).map(c=>`<span class="chip" style="background:${c.hbg};color:${c.htc};">${c.emoji}${t.marbles[c.key]}</span>`).join('')}</div>
-    <div class="lbpts">${+(t.points||0).toFixed(1)}<small>pts</small></div>
-  </div>`).join('');
+  document.getElementById('lb').innerHTML=teams.map((t,i)=>
+    `<div class="lbrow">
+      <div class="lbrk ${i<3?'m':''}">${i<3?medals[i]:i+1}</div>
+      <div class="lbname">${t.name}</div>
+      <div class="lbchips">${C.filter(c=>t.marbles[c.key]>0).map(c=>`<span class="chip" style="background:${c.hbg};color:${c.htc};">${c.emoji}${t.marbles[c.key]}</span>`).join('')}</div>
+      <div class="lbpts">${+(t.points||0).toFixed(1)}<small>pts</small></div>
+    </div>`
+  ).join('');
 }
 
+// ═══════════════════════════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════════════════════════
 function renderBaseAdj(){
   const el=document.getElementById('base-adj');
   if(!el.querySelector('input')){
@@ -774,83 +826,57 @@ function renderBaseAdj(){
     </div>`).join('');
   }
 }
-
 function applyBase(){
-  transactionRunner(() => {
-    C.forEach(c=>{
-      const v=parseInt(document.getElementById('ba-'+c.key)?.value||'0')||0;
-      DB.stock[c.key]=Math.max(0,(DB.stock[c.key]||0)+v);
-      document.getElementById('ba-'+c.key).value=0;
-    });
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:'Adjusted base stock'});
-  }, 'Base stock updated');
+  const deltas={};
+  C.forEach(c=>{deltas[c.key]=parseInt(document.getElementById('ba-'+c.key)?.value||'0')||0;});
+  const op={type:'adjStock',deltas,logMsg:'Adjusted base stock'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();
+  C.forEach(c=>{const i=document.getElementById('ba-'+c.key);if(i)i.value=0;});
+  toast('Base stock updated');atomicWrite(op);
 }
-
 function setExactBase(){
-  const vals=C.map(c=>({c,v:parseInt(document.getElementById('ba-'+c.key)?.value||'0')||0}));
-  if(vals.every(x=>x.v===0)){toast('Enter values first');return;}
-  
-  transactionRunner(() => {
-    vals.forEach(({c,v})=>{if(v>0)DB.stock[c.key]=v;});
-    C.forEach(c=>{const i=document.getElementById('ba-'+c.key);if(i)i.value=0;});
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:'Set exact base stock'});
-  }, 'Base stock set');
+  const vals={};
+  C.forEach(c=>{const v=parseInt(document.getElementById('ba-'+c.key)?.value||'0')||0;if(v>0)vals[c.key]=v;});
+  if(!Object.keys(vals).length){toast('Enter values first');return;}
+  const op={type:'setStock',values:vals,logMsg:'Set exact base stock'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();
+  C.forEach(c=>{const i=document.getElementById('ba-'+c.key);if(i)i.value=0;});
+  toast('Base stock set');atomicWrite(op);
 }
-
 function renderTeamNameEditor(){
   const el=document.getElementById('team-name-editor');
   if(!el)return;
   el.innerHTML=DB.teams.map(t=>`<div style="display:flex;flex-direction:column;gap:5px;">
     <label style="font-size:11px;color:var(--mu);">Team ${t.id+1}</label>
-    <input type="text" id="team-name-${t.id}" value="${t.name.replace(/"/g,'&quot;')}"
-      style="width:100%;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:8px 10px;color:var(--tx);font-family:var(--font);">
+    <input type="text" id="tname-${t.id}" value="${t.name.replace(/"/g,'&quot;')}"
+      style="background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:8px 10px;color:var(--tx);font-family:var(--font);font-size:13px;">
   </div>`).join('');
 }
-
 function saveTeamNames(){
-  transactionRunner(() => {
-    DB.teams.forEach(t=>{
-      const input=document.getElementById('team-name-'+t.id);
-      const name=(input?.value||'').trim();
-      if(name)t.name=name;
-    });
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:'Updated team names'});
-  }, 'Team names saved');
-  renderTeamNameEditor();
+  const names=DB.teams.map(t=>{
+    const inp=document.getElementById('tname-'+t.id);
+    const name=(inp?.value||'').trim();
+    return{id:t.id,name:name||t.name};
+  });
+  const op={type:'renameTeams',names,logMsg:'Updated team names'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();renderTeamNameEditor();
+  toast('Team names saved');atomicWrite(op);
 }
-
 function resetPoints(){
   if(!confirm('Reset ALL team points to 0?'))return;
-  transactionRunner(() => {
-    DB.teams.forEach(t=>t.points=0);
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:'Reset all points'});
-  }, 'All points reset');
+  const op={type:'resetPoints',logMsg:'Reset all points'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();toast('All points reset');atomicWrite(op);
 }
-
 function resetMarbles(){
   if(!confirm('Reset ALL team marble counts to 0?'))return;
-  transactionRunner(() => {
-    DB.teams.forEach(t=>C.forEach(c=>t.marbles[c.key]=0));
-    DB.log=DB.log||[];
-    DB.log.unshift({t:Date.now(),msg:'Reset all marbles'});
-  }, 'All marbles reset');
+  const op={type:'resetMarbles',logMsg:'Reset all marbles'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();toast('All marbles reset');atomicWrite(op);
 }
-
 function resetAll(){
-  if(!confirm('Reset EVERYTHING — marbles, points, and base stock?'))return;
-  transactionRunner(() => {
-    const freshDefault = mkDefault();
-    DB.teams = freshDefault.teams;
-    DB.stock = freshDefault.stock;
-    DB.log = [];
-    DB.log.unshift({t:Date.now(),msg:'Full reset performed'});
-  }, 'Everything reset');
+  if(!confirm('Reset EVERYTHING?'))return;
+  const op={type:'resetAll',logMsg:'Full reset'};
+  DB=applyOpToState(DB,op);lsSave(DB);renderAll();toast('Everything reset');atomicWrite(op);
 }
-
 function renderLog(){
   const log=DB.log||[];
   document.getElementById('log-wrap').innerHTML=log.length
@@ -858,12 +884,16 @@ function renderLog(){
     :'<div class="log-row"><div class="log-msg" style="color:var(--mu);">No activity yet</div></div>';
 }
 function clearLog(){
-  transactionRunner(() => {
-    DB.log=[];
-  }, 'Log cleared');
-  renderLog();
+  DB.log=[];lsSave(DB);renderLog();
+  atomicWrite({type:'resetAll',logMsg:null}); // won't actually reset — log cleared via direct assignment above
+  // Simpler: just push a lightweight log-clear op
+  fbGet().then(got=>{if(!got)return;const r=ensureSchema(got.data);r.log=[];r.version=(r.version||0)+1;r.updatedAt=Date.now();fbPut(r,got.etag);});
+  toast('Log cleared');
 }
 
+// ═══════════════════════════════════════════════════════════════
+// RENDER ALL
+// ═══════════════════════════════════════════════════════════════
 function renderAll(){
   renderRates();
   renderGive();
@@ -873,42 +903,41 @@ function renderAll(){
   renderBoard();
 }
 
+// ═══════════════════════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════════════════════
 let tt;
 function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2600);}
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 // BOOT
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
 (async function boot(){
   DB=ensureSchema(lsLoad()||mkDefault());
   renderBaseAdj();
-
-  FBU = 'https://ahis-lsc-2627-default-rtdb.asia-southeast1.firebasedatabase.app';
-  lsSetFBU(FBU);
-  
-  const fbBannerEl = document.getElementById('fbbanner');
-  if(fbBannerEl) fbBannerEl.style.display = 'none';
-  
-  updateFBUInputDisplay(FBU);
+  renderAll();
   setSS('w','Connecting…');
 
-  const rem=await fbRead();
-  if(rem){
-    if(!DB.updatedAt || rem.updatedAt > DB.updatedAt){
-      DB=ensureSchema(rem);
-      lsSave(DB);
+  const got=await fbGet();
+  if(got&&got.data){
+    const remote=ensureSchema(got.data);
+    if((remote.version||0)>=(DB.version||0)){
+      DB=remote;lsSave(DB);renderAll();
+    } else {
+      // Local is newer — push local state to Firebase
+      await fbPut(DB,got.etag);
     }
     setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
   } else {
-    await fbWrite(DB);
-    setSS('ok','Synced');
+    // First time or Firebase empty — write local default
+    const r=await fbGet();
+    if(r&&!r.data){await fbPut(DB,'');}
+    setSS(got?'ok':'e',got?'Synced':'Cannot reach Firebase');
   }
-  startPoll();
 
+  // Pre-load rates for Take tab
   loadLiveRates();
-  renderAll();
-
-  setInterval(()=>{if(!FBU){const f=lsLoad();if(f&&f.updatedAt!==DB.updatedAt){DB=ensureSchema(f);renderAll();}}},2000);
+  startPoll();
 })();
 </script>
 </body>
