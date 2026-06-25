@@ -292,16 +292,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 20px;displa
 <!-- ⑤ SETTINGS -->
 <div id="view-settings" class="view">
   <div class="card" style="margin-bottom:20px;">
-    <div class="ttl">Firebase connection</div>
-    <p style="font-size:12px;color:var(--mu);margin-bottom:12px;">Connected to your project database. Change URL here if needed.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <input type="text" id="fbinp" style="flex:1;min-width:200px;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:8px 12px;color:var(--tx);font-family:var(--mono);font-size:12px;">
-      <button class="btn pp" onclick="reconnectFB()">Reconnect</button>
-    </div>
-    <p style="margin-top:8px;font-size:11px;color:var(--mu);" id="fb-status-detail"></p>
-  </div>
-
-  <div class="card" style="margin-bottom:20px;">
     <div class="ttl">Adjust base marble stock</div>
     <p style="font-size:12px;color:var(--mu);margin-bottom:14px;">Positive = add, negative = subtract. "Set exact" replaces base stock with entered values.</p>
     <div class="base-adj" id="base-adj"></div>
@@ -561,27 +551,9 @@ function startPoll(){
   },3000);
 }
 
-async function reconnectFB(){
-  const url=(document.getElementById('fbinp').value||'').trim();
-  // In this build, URL is hardcoded; reconnect just re-polls
-  setSS('w','Reconnecting…');
-  const got=await fbGet();
-  if(got){
-    const remote=ensureSchema(got.data);
-    if(remote.version>(DB.version||0)){DB=remote;lsSave(DB);renderAll();}
-    setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
-    toast('Reconnected ✓');
-  }else{
-    setSS('e','Cannot reach Firebase');
-    toast('Could not connect');
-  }
-}
-
 function setSS(s,lbl){
   document.getElementById('sdot').className='sdot'+(s==='ok'?'':s==='w'?' w':' e');
   document.getElementById('slabel').textContent=lbl;
-  const det=document.getElementById('fb-status-detail');
-  if(det)det.textContent=lbl+' · '+FBU;
 }
 
 let conflictTimer;
@@ -603,8 +575,7 @@ function go(v){
   if(v==='give')renderGive();
   if(v==='take')renderTake();
   if(v==='board')renderBoard();
-  if(v==='settings'){renderBaseAdj();renderTeamNameEditor();renderLog();
-    document.getElementById('fbinp').value=FBU;}
+  if(v==='settings'){renderBaseAdj();renderTeamNameEditor();renderLog();}
 }
 
 // ═══════════════════════════════════════════════════════════════
